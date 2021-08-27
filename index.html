@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form  name="myform" onsubmit="return validation()">
+  <label for="email"><b>Email</b></label><br>
+  <input type= "email"placeholder="enter the email" name="email"> <p id="email1"></p><br>
+  <label for="phone number"><b>phone number</b></label><br>
+  <input type="zipcode" placeholder="phone number" name="zipcode"><p id="zip"></p><br>
+  <label for="password"><b>password</b></label><br>
+  <input type="password" placeholder="password"name="pwd1"><p id="pass"></p>
+  <button type="button"onclick="return validation()">Submit</button><br>
+  <script>
+    function validation()
+    {
+       var mail=document.forms["myform"]["email"].value;
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+           if (mailformat.test(mail))
+          {
+
+            return true;
+          }
+          else{
+              //alert("Please provide a valid email address");
+            document.getElementById("email1").innerHTML ="Please provide a valid email address";
+            document.getElementById("email1").style.color="red";
+          }
+          var x=document.forms["myform"]["zipcode"].value;
+             if(isNaN(x) || x < 1 || x.length<=10)
+              {
+                //alert("invalid zipcode ");
+                document.getElementById("zip").innerHTML ="invalid phone number";
+                document.getElementById("zip").style.color="red";
+              }  
+              else{
+                return true;
+              }
+              var str = document.forms["myform"]["pwd1"].value;
+              if (str.match(/[a-z]/g) && str.match(/[A-Z]/g) && str.match(/[0-9]/g) && str.match(/[^a-zA-Z\d]/g) && str.length >= 8)
+                    {
+                      return true;
+                    }
+      
+            else{
+              //alert("invalid password");
+            document.getElementById("pass").innerHTML= "invalid password";
+            document.getElementById("pass").style.color="red";
+            }
+    }
+  </script>
+</body>
+</html>

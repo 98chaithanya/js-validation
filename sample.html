@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="myform" onsubmit="validation();return false">
+    <label for="password"><b>password</b></label><br>
+    <input type="text" placeholder="password"name="pwd1"><p id="pass"></p>
+    <input type="submit" value="submit"><br>
+    </form>
+    <script>
+        function validation() {
+        //var strength = document.forms["myform"]["pwd1"].value;
+        var pw= document.forms["myform"]["pwd1"].value;
+        var strongRegex = new RegExp("^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+        var mediumRegex = new RegExp("^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+       // var enoughRegex = new RegExp("(?=.{8,}).*", "g");
+        //if(pwd.value.length == 0) {
+          //  document.getElementById("pass").innerHTML ="password should contain 6 character"
+           // document.getElementById("pass").style.color="green";
+        //  if (enoughRegex.test(pw)) {
+        //     document.getElementById("pass").innerHTML ="week";
+        //     document.getElementById("pass").style.color="red";
+         if (strongRegex.test(pw)) {
+            document.getElementById("pass").innerHTML ="strong";
+            document.getElementById("pass").style.color="green";
+        } else if(mediumRegex.test(pw)){
+            document.getElementById("pass").innerHTML ="medium";
+            document.getElementById("pass").style.color="orange";
+        }
+        else {
+             document.getElementById("pass").innerHTML ="week";
+            document.getElementById("pass").style.color="red";
+    }
+    }
+    </script>
+</body>
+</html>

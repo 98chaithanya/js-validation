@@ -1,0 +1,37 @@
+<form  name="myform" onsubmit="validation();return false">
+  <label for="email"><b>Email</b></label><br>
+  <input type= "email"placeholder="enter the email" name="email"> <p id="email1"></p><br>
+  <label for="phone number"><b>phone number</b></label><br>
+  <input type="zipcode" placeholder="phone number" name="zipcode"><p id="zip"></p><br>
+  <input type="submit"value="Submit"><br></form>
+  <script>
+    function validation()
+    {
+      var mail=document.forms["myform"]["email"].value;
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+           if (mailformat.test(mail))
+          {
+
+            return true;
+          }
+          else{
+              //alert("Please provide a valid email address");
+            document.getElementById("email1").innerHTML ="Please provide a valid email address";
+            document.getElementById("email1").style.color="red";
+          }
+       var mail=document.forms["myform"]["zipcode"].value;
+            var mailformat = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+           if (mailformat.test(mail))
+          {
+
+            return true;
+          }
+          else{
+              //alert("Please provide a valid email address");
+            document.getElementById("zip").innerHTML ="Please provide a valid phone number";
+            document.getElementById("zip").style.color="red";
+          }
+        }
+        </script>
+        </body>
+        </html>
